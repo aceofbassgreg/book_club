@@ -1,0 +1,2 @@
+class UserOption < ApplicationRecord
+end
