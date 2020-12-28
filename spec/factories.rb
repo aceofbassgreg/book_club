@@ -1,19 +1,20 @@
 FactoryBot.define do
-  factory :post do
-    name
+  factory :poll do
+    name { "January 2020" }
   end
 
   factory :option do
-    post
-    name
-    author
-    link
     poll
+    name { "Book A" }
+    author { "Jill Jones" }
+    link { "www.example.com" }
   end
 
   factory :user do
-    first_name
-    last_name
-    email
+    first_name { "Betty" }
+    last_name { "Boop" }
+    email { "betty@boop.com" }
   end
+
+  factory :user_option
 end
