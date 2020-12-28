@@ -11,11 +11,14 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
+# bootsnap dependency
+gem 'rexml'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -26,7 +29,6 @@ end
 
 group :test do
   gem 'capybara', '>= 3.26'
-  gem 'rspec'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
