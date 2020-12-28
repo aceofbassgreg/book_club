@@ -4,7 +4,7 @@ class CreateOptions < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :author
       t.string :link
-      t.foreign_key :poll_id
+      t.references :poll, foreign_key: true
 
       t.timestamps
     end
