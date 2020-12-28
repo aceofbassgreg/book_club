@@ -12,25 +12,29 @@
 
 ActiveRecord::Schema.define(version: 2020_12_28_145041) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "options", force: :cascade do |t|
     t.string "name"
     t.string "author"
     t.string "link"
-    t.integer "poll_id"
+    t.bigint "poll_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["poll_id"], name: "index_options_on_poll_id"
   end
 
   create_table "polls", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_polls_on_name", unique: true
   end
 
   create_table "user_options", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "option_id"
+    t.bigint "user_id"
+    t.bigint "option_id"
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,11 +43,12 @@ ActiveRecord::Schema.define(version: 2020_12_28_145041) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "options", "polls"
