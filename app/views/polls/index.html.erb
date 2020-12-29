@@ -1,3 +1,10 @@
-<% @polls.each do |poll| %>
-  <%= poll.name %>
-<% end %>
+<div class="section">
+  <% @polls.each do |poll| %>
+    <div class="container">
+      <h2 class="title">
+        <%= poll.name %>
+      </h2>
+
+    </div>
+  <% end %>
+</div>
