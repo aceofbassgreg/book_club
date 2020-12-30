@@ -4,7 +4,11 @@
       <h2 class="title">
         <%= poll.name %>
       </h2>
-
+      <% poll.options.each do |option| %>
+        <p>
+          <%= option.name %>
+        </p>
+      <% end %>
     </div>
   <% end %>
 </div>
