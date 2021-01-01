@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2020_12_28_145041) do
   enable_extension "plpgsql"
 
   create_table "options", force: :cascade do |t|
-    t.string "name"
-    t.string "author"
+    t.string "title", null: false
+    t.string "author", null: false
     t.string "link"
     t.bigint "poll_id"
     t.datetime "created_at", precision: 6, null: false
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2020_12_28_145041) do
   end
 
   create_table "user_options", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "option_id"
+    t.bigint "user_id", null: false
+    t.bigint "option_id", null: false
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
