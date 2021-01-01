@@ -4,6 +4,7 @@ class PollsController < ApplicationController
   end
 
   def new
+    @poll = Poll.new
   end
 
   def create

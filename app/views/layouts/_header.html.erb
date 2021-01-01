@@ -4,12 +4,12 @@
       <img src="/logo.jpg">
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       </a>
-
+      <h2 id="app-title" class="title is-2">DCQEBC</h2>
     </div>
   </div>
   <div class="navbar-menu">
     <div class="navbar-end">
-      <a class="navbar-item" href='#'>Create Poll</a>
+      <%= link_to "Create Poll", new_poll_url, class: "navbar-item" %>
       <a class="navbar-item" href='#'>Log in</a>
     </div>
   </div>
