@@ -1,6 +1,6 @@
 class PollsController < ApplicationController
   def index
-    @polls = Poll.all
+    @polls = serialized_polls
   end
 
   def new
@@ -10,7 +10,7 @@ class PollsController < ApplicationController
 
   def create
     Poll.create(poll_params)
-    @polls = Poll.all
+    @polls = serialized_polls
     render :index
   end
 
@@ -29,6 +29,12 @@ class PollsController < ApplicationController
   private
 
   def poll_params
-    params.require(:poll).permit(:name, options_attributes: %i[title author link])
+    params.require(:poll).permit(
+      :name, :active_starting_at, :active_ending_at, options_attributes: %i[title author link]
+    )
+  end
+
+  def serialized_polls
+    Polls::Json.new.(Poll.all)
   end
 end
