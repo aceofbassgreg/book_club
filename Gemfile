@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
-
+gem 'bcrypt'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bulma-rails', '~> 0.9.1'
 gem 'jbuilder', '~> 2.7'
@@ -35,6 +35,10 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+end
+
+group :development, :production do
+  gem 'redis'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
