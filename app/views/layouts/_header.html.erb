@@ -9,10 +9,10 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-end">
-      <%= link_to "Create Poll", new_poll_url, class: "navbar-item" %>
       <% unless logged_in? %>
         <%= link_to "Sign In", sessions_new_url,  class: "navbar-item" %>
       <% else %>
+        <%= link_to "Create Poll", new_poll_url, class: "navbar-item" %>
         <%= link_to "Sign Out", {
           controller: :sessions,
           action: 'destroy',
