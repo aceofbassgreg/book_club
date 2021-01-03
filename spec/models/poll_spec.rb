@@ -4,8 +4,8 @@ describe Poll do
   let(:poll) { create(:poll, name: "January 2021") }
 
   describe "#option_score" do
-    let(:iliad) { create(:option, name: "The Iliad", poll: poll) }
-    let(:odyssey) { create(:option, name: "The Odyssey", poll: poll) }
+    let(:iliad) { create(:option, title: "The Iliad", poll: poll) }
+    let(:odyssey) { create(:option, title: "The Odyssey", poll: poll) }
 
     let(:betty) do
       create(:user, first_name: "Betty", last_name: "Boop", email: "betty@boop.com")
