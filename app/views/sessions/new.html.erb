@@ -1,2 +1,14 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<div class="container">
+  <h2 class="title is-2">Log in</h2>
+  <%= form_with url: '/login', method: :post do |form|%>
+    <div class="field">
+      <label class="label">Email:</label>
+      <%= form.text_field :email, class: "input" %>
+    </div>
+    <div class="field">
+      <label class="label">Password:</label>
+      <%= form.text_field :password, class: "input" %>
+    </div>
+    <%= form.submit class: "button is-success is-light", value: "Log In"%>
+    <% end %>
+</div>

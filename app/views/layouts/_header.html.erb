@@ -10,8 +10,8 @@
   <div class="navbar-menu">
     <div class="navbar-end">
       <%= link_to "Create Poll", new_poll_url, class: "navbar-item" %>
-      <% if !logged_in? %>
-        <a class="navbar-item" href='#'>Log in</a>
+      <% unless logged_in? %>
+        <%= link_to "Sign In", sessions_new_url,  class: "navbar-item" %>
       <% else %>
         <a class="navbar-item" href='#'>Log out</a>
       <% end %>
