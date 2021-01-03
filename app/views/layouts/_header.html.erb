@@ -10,7 +10,11 @@
   <div class="navbar-menu">
     <div class="navbar-end">
       <%= link_to "Create Poll", new_poll_url, class: "navbar-item" %>
-      <a class="navbar-item" href='#'>Log in</a>
+      <% if !logged_in? %>
+        <a class="navbar-item" href='#'>Log in</a>
+      <% else %>
+        <a class="navbar-item" href='#'>Log out</a>
+      <% end %>
     </div>
   </div>
 </nav>
