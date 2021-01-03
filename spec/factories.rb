@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :poll do
-    name { "January 2020" }
+    sequence(:name) { |n| "Poll ##{n}" }
     active_starting_at { Date.yesterday }
     active_ending_at { Date.tomorrow }
   end
