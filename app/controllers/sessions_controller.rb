@@ -1,7 +1,18 @@
 class SessionsController < ApplicationController
-  def new
+  def new; end
+
+  def create
+    @user = User.find_by(email: params[:email])
+    if @user&.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to '/polls'
+    else
+      redirect_to '/sessions/new'
+    end
   end
 
-  def login
+  def destroy
+    session[:user_id] = nil
+    redirect_to '/polls'
   end
 end
