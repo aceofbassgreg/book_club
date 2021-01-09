@@ -1,11 +1,11 @@
 class Poll < ApplicationRecord
-  has_many :options, dependent: :destroy
-  has_many :user_options, through: :options
+  has_many :books, dependent: :destroy
+  has_many :user_book_votes, through: :books
 
-  accepts_nested_attributes_for :options
+  accepts_nested_attributes_for :books
 
-  def option_score(option_id)
-    opts = user_options.where(option_id: option_id)
+  def book_score(book_id)
+    opts = user_book_votes.where(book_id: book_id)
     opts.pluck(:score).inject(:+)
   end
 end

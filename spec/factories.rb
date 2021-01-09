@@ -5,7 +5,7 @@ FactoryBot.define do
     active_ending_at { Date.tomorrow }
   end
 
-  factory :option do
+  factory :book do
     poll
     title { "Book A" }
     author { "Jill Jones" }
@@ -19,5 +19,5 @@ FactoryBot.define do
     password { "password99" }
   end
 
-  factory :user_option
+  factory :user_book_vote
 end

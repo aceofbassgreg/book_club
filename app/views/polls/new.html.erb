@@ -16,15 +16,15 @@
     </br>
     </br>
     <h3 class="title is-3">Book options:</h4>
-    <%= form.fields_for :options do |options_form| %>
+    <%= form.fields_for :books do |books_form| %>
       <div id="fieldsetContainer">
         <fieldset id="0" class="field is-horizontal">
           <label class="field-label">Title:</label>
-          <%= options_form.text_field :title, class: "input field-body" %>
+          <%= books_form.text_field :title, class: "input field-body" %>
           <label class="field-label">Author:</label>
-          <%= options_form.text_field :author, class: "input field-body" %>
+          <%= books_form.text_field :author, class: "input field-body" %>
           <label class="field-label">Link:</label>
-          <%= options_form.text_field :link, class: "input field-body" %>
+          <%= books_form.text_field :link, class: "input field-body" %>
         </fieldset>
       </div>
     <% end %>

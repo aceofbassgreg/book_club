@@ -1,14 +1,14 @@
 <div class="section">
   <% @polls.each do |poll| %>
-    <div class="box">
+    <%= link_to poll, class: "box" do %>
       <h2 class="title">
         <%= poll.name %>
       </h2>
-      <% poll.options.each do |option| %>
+      <% poll.books.each do |book| %>
         <p>
-          <%= option.title %>
+          <%= book.title %>
         </p>
       <% end %>
-    </div>
+    <% end %>
   <% end %>
 </div>

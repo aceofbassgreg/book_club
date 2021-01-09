@@ -3,9 +3,9 @@ require "rails_helper"
 describe Poll do
   let(:poll) { create(:poll, name: "January 2021") }
 
-  describe "#option_score" do
-    let(:iliad) { create(:option, title: "The Iliad", poll: poll) }
-    let(:odyssey) { create(:option, title: "The Odyssey", poll: poll) }
+  describe "#book_score" do
+    let(:iliad) { create(:book, title: "The Iliad", poll: poll) }
+    let(:odyssey) { create(:book, title: "The Odyssey", poll: poll) }
 
     let(:betty) do
       create(:user, first_name: "Betty", last_name: "Boop", email: "betty@boop.com")
@@ -16,12 +16,12 @@ describe Poll do
     end
 
     it "calculates the total for a given poll option" do
-      create(:user_option, user: liz, option: odyssey, score: 8)
-      create(:user_option, user: betty, option: odyssey, score: 7)
+      create(:user_book_vote, user: liz, book: odyssey, score: 8)
+      create(:user_book_vote, user: betty, book: odyssey, score: 7)
 
-      create(:user_option, user: liz, option: iliad, score: 2)
+      create(:user_book_vote, user: liz, book: iliad, score: 2)
 
-      expect(poll.option_score(odyssey.id)).to be(15)
+      expect(poll.book_score(odyssey.id)).to be(15)
     end
   end
 end

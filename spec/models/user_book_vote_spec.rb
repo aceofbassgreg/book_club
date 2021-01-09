@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Option do
+describe UserBookVote do
   # test "the truth" do
   #   assert true
   # end
