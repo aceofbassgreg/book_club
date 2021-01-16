@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:email])
     if @user&.authenticate(params[:password])
-      session[:user_id] = @user.id
+      session[:current_user_id] = @user.id
       redirect_to '/polls'
     else
       redirect_to '/sessions/new'

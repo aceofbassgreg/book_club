@@ -1,6 +1,6 @@
 <div class="section">
   <% @polls.each do |poll| %>
-    <%= link_to poll, class: "box" do %>
+    <%= link_to edit_poll_path(poll), class: "box" do %>
       <h2 class="title">
         <%= poll.name %>
       </h2>
