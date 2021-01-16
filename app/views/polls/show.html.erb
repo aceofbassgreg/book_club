@@ -1,1 +1,21 @@
-<p>Hi</p>
+<div class="container">
+  <h2 class="title is-2"><%= @poll.name %></h2>
+  <%= form_with model: @poll do |f| %>
+    <%= f.fields_for :user_book_votes do |form| %>
+      <table class="table">
+        <% @poll.books.each do |book| %>
+          <tr>
+            <td><%= book.title %></td>
+            <td><%= book.author %></td>
+            <td>
+              <div class="slidecontainer">
+                <%= form.range_field :score, min: 1, max: 10, class: "slider"%>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <%= form.submit class: "button is-success is-light is-rounded" %>
+    <% end %>
+  <% end %>
+</div>

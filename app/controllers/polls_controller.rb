@@ -5,7 +5,7 @@ class PollsController < ApplicationController
 
   def new
     @poll = Poll.new
-    @poll.options.build
+    @poll.books.build
   end
 
   def create
@@ -15,12 +15,17 @@ class PollsController < ApplicationController
   end
 
   def edit
+    @poll = Poll.find(poll_params[:id])
   end
 
   def show
+    @poll = Poll.find(params[:id])
+    @poll.books.each { |b| b.user_book_votes.build(user_id: params[:user_id]) }
   end
 
   def update
+    @poll = Poll.find(params[:id])
+    @user_book_votes = @poll.build(:user_)
   end
 
   def destroy
@@ -30,7 +35,9 @@ class PollsController < ApplicationController
 
   def poll_params
     params.require(:poll).permit(
-      :name, :active_starting_at, :active_ending_at, options_attributes: %i[title author link]
+      :name, :active_starting_at, :active_ending_at,
+        books_attributes: %i[title author link],
+        user_book_votes: %i[score]
     )
   end
 
