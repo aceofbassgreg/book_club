@@ -1,6 +1,6 @@
 <div class="section">
   <% @polls.each do |poll| %>
-    <% if current_user %>
+    <% if current_user && !current_user.finished_voting_in_poll?(poll.id) %>
       <%= link_to edit_poll_path(poll), class: "box" do %>
         <h2 class="title">
           <%= poll.name %>
