@@ -1,14 +1,27 @@
 <div class="section">
   <% @polls.each do |poll| %>
-    <%= link_to edit_poll_path(poll), class: "box" do %>
-      <h2 class="title">
-        <%= poll.name %>
-      </h2>
-      <% poll.books.each do |book| %>
-        <p>
-          <%= book.title %>
-        </p>
+    <% if current_user %>
+      <%= link_to edit_poll_path(poll), class: "box" do %>
+        <h2 class="title">
+          <%= poll.name %>
+        </h2>
+        <% poll.books.each do |book| %>
+          <p>
+            <%= book.title %>
+          </p>
+        <% end %>
       <% end %>
+    <% else %>
+      <div class="box">
+        <h2 class="title">
+          <%= poll.name %>
+        </h2>
+        <% poll.books.each do |book| %>
+          <p>
+            <%= book.title %>
+          </p>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
