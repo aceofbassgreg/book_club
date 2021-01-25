@@ -13,6 +13,10 @@ class User < ApplicationRecord
     votes.pluck(:book_id).sort == books.pluck(:id).sort && !books.empty?
   end
 
+  def admin?
+    admin
+  end
+
   private
 
   def votes_for_poll(poll_id)
