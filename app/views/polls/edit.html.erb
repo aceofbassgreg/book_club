@@ -1,7 +1,14 @@
 <div class="container">
   <h2 class="title is-2"><%= @poll.name %></h2>
   <%= form_with model: @poll do |f| %>
-    <table class="table">
+    <table class="table is-bordered is-striped is-hoverable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Your Score (Low to High)</th>
+        </tr>
+      </thead>
       <% @poll.books.each do |book| %>
         <tr>
           <td><%= book.title %></td>
@@ -9,7 +16,7 @@
           <td>
             <div class="slidecontainer">
               <%= f.fields_for "user_book_votes[#{book.id}]" do |vote_form| %>
-                <%= vote_form.range_field :score, min: 1, max: 100, step: 1, class: "selector"%>
+                <%= vote_form.range_field :score, min: 1, max: 100, step: 1, class: "slider"%>
               <% end %>
             </div>
           </td>
