@@ -15,6 +15,18 @@
  */
 @import "bulma";
 
+#app-title {
+  padding-left: 1em;
+}
+
+.navbar-brand {
+  padding-left: 1em;
+}
+
+h2 {
+  padding-bottom: 50px;
+}
+
 .slider {
     display: block;
     width: 300px;
