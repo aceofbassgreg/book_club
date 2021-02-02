@@ -1,11 +1,13 @@
 <nav class="navbar is-light is-spaced" role="navigation" aria-label="main navigation">
   <div class="navbar-start">
-    <div class="navbar-brand">
-      <img src="/logo.jpg">
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      </a>
-      <div id="app-title" class="title is-2">DCQEBC</div>
-    </div>
+    <%= link_to root_path do %>
+      <div class="navbar-brand is-hoverable">
+        <img src="/logo.jpg">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        </a>
+        <div id="app-title" class="title ml-3">DCQEBC</div>
+      </div>
+    <% end %>
   </div>
   <div class="navbar-menu">
     <div class="navbar-end">
