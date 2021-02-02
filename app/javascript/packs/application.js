@@ -19,7 +19,6 @@ ActiveStorage.start()
 
 document.addEventListener('turbolinks:load', ()=> {
   if (document.querySelector('#fieldsetContainer')) {
-    console.log("FOUND");
     addBook()
   }
 })
