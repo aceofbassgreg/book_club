@@ -46,3 +46,7 @@ h2 {
 .high_score {
   display: inline-block;
 }
+
+td {
+  vertical-align: middle;
+}
