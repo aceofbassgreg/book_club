@@ -8,6 +8,9 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import { addBook } from '../packs/addBook'
+
+import "@fortawesome/fontawesome-free/js/all";
+
 window.addBook = addBook
 
 Rails.start()

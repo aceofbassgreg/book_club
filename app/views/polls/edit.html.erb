@@ -6,7 +6,7 @@
         <tr>
           <th>Title</th>
           <th>Author</th>
-          <th>Your Score (Low to High)</th>
+          <th>How excited you are to read this book:</th>
         </tr>
       </thead>
       <% @poll.books.each do |book| %>
@@ -16,7 +16,13 @@
           <td>
             <div class="slidecontainer">
               <%= f.fields_for "user_book_votes[#{book.id}]" do |vote_form| %>
+                <span class="icon is-large">
+                  <i class="far fa-thumbs-down"></i>
+                </span>
                 <%= vote_form.range_field :score, min: 1, max: 100, step: 1, class: "slider"%>
+                <span class="icon is-large">
+                  <i class="far fa-thumbs-up"></i>
+                </span>
               <% end %>
             </div>
           </td>
