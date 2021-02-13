@@ -50,3 +50,11 @@ h2 {
 td {
   vertical-align: middle;
 }
+
+.call-to-action {
+  color: green;
+}
+
+.book-title-in-poll {
+  text-indent: 25px;
+}
