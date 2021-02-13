@@ -1,0 +1,10 @@
+<div class="box">
+  <h2 class="title">
+    <%= poll.name %>
+  </h2>
+  <% poll.books.each do |book| %>
+    <p>
+      <%= book.title %>
+    </p>
+  <% end %>
+</div>

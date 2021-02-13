@@ -1,27 +1,9 @@
 <div class="section">
   <% @polls.each do |poll| %>
     <% if current_user && !current_user.finished_voting_in_poll?(poll.id) %>
-      <%= link_to edit_poll_path(poll), class: "box" do %>
-        <h2 class="title">
-          <%= poll.name %>
-        </h2>
-        <% poll.books.each do |book| %>
-          <p>
-            <%= book.title %>
-          </p>
-        <% end %>
-      <% end %>
+      <%= render "shared/active_poll_item", poll: poll %>
     <% else %>
-      <div class="box">
-        <h2 class="title">
-          <%= poll.name %>
-        </h2>
-        <% poll.books.each do |book| %>
-          <p>
-            <%= book.title %>
-          </p>
-        <% end %>
-      </div>
+      <%= render "shared/inactive_poll_item", poll: poll %>
     <% end %>
   <% end %>
 </div>
