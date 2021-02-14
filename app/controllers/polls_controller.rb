@@ -1,8 +1,4 @@
 class PollsController < ApplicationController
-  def index
-    @polls = serialized_polls
-  end
-
   def new
     @poll = Poll.new
     @poll.books.build
@@ -19,10 +15,6 @@ class PollsController < ApplicationController
     @poll.books.map { |b| b.user_book_votes.build }
   end
 
-  def show
-    @poll = Poll.find(params[:id])
-  end
-
   def update
     # {"user_book_votes"=>#<ActionController::Parameters {"7"=>#<ActionController::Parameters {"score"=>"20", "book_id"=>"7"} permitted: true>, "8"=>#<ActionController::Parameters {"score"=>"1", "book_id"=>"8"} permitted: true>, "9"=>#<ActionController::Parameters {"score"=>"15", "book_id"=>"9"} permitted: true>} permitted: true>}
     @poll = Poll.find(params[:id])
@@ -33,8 +25,8 @@ class PollsController < ApplicationController
         user_id: session[:current_user_id]
       )
     end
-    @polls = serialized_polls
-    render :index
+    # FIXME - should be able to render without setting this instance var
+    redirect_to events_url
   end
 
   def destroy
@@ -44,11 +36,7 @@ class PollsController < ApplicationController
 
   def poll_params
     params.require(:poll).permit(
-      :name, :active_starting_at, :active_ending_at, books_attributes: %i[title author link], user_book_votes: %i[score book_id]
+      :active_starting_at, :active_ending_at, books_attributes: %i[title author link], user_book_votes: %i[score book_id]
     )
-  end
-
-  def serialized_polls
-    Polls::Json.new.(Poll.all)
   end
 end

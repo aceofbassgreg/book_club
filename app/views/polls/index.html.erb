@@ -1,9 +1,0 @@
-<div class="section">
-  <% @polls.each do |poll| %>
-    <% if current_user && !current_user.finished_voting_in_poll?(poll.id) && poll.active? %>
-      <%= render "shared/active_poll_item", poll: poll %>
-    <% else %>
-      <%= render "shared/inactive_poll_item", poll: poll %>
-    <% end %>
-  <% end %>
-</div>

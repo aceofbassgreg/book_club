@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'users/new'
   post 'users/create'
 
+  resources :events
   resources :polls
-  root to: 'polls#index'
+  root to: 'events#index'
 end

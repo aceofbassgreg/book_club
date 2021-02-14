@@ -1,0 +1,11 @@
+<%= link_to edit_poll_path(event.book_poll), class: "box" do %>
+  <h3 class="is-size-3"><%= event.name %></h3>
+  <p class="call-to-action">Voting is open, click here to vote!</p>
+  </br>
+  <h4 class="is-size-4">Book options:</h4>
+  <% if event.book_poll.user_book_votes %>
+    <%= render "shared/book_options_list", books: event.book_poll.books %>
+  <% else %>
+    <p>TBD</p>
+  <% end %>
+<% end %>
