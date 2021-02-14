@@ -3,9 +3,9 @@
   <p class="call-to-action">Voting is open, click here to vote!</p>
   </br>
   <h4 class="is-size-4">Book options:</h4>
-  <% poll.books.each do |book| %>
-    <p class="book-title-in-poll">
-    <i><%= book.title %></i>, by <%= book.author %>
-    </p>
+  <% if poll.user_book_votes %>
+    <%= render "shared/book_options_list", books: poll.books %>
+  <% else %>
+    <p>TBD</p>
   <% end %>
 <% end %>
