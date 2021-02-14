@@ -5,7 +5,7 @@
   <h4 class="is-size-4">Book options:</h4>
   <% poll.books.each do |book| %>
     <p class="book-title-in-poll">
-      <%= book.title %>
+    <i><%= book.title %></i>, by <%= book.author %>
     </p>
   <% end %>
 <% end %>
