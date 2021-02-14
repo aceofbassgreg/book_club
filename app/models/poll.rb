@@ -9,4 +9,12 @@ class Poll < ApplicationRecord
     opts = user_book_votes.where(book_id: book_id)
     opts.pluck(:score).inject(:+)
   end
+
+  def winner
+    user_book_votes.order('score DESC').first.book
+  end
+
+  def active?
+    Time.now < active_ending_at
+  end
 end
