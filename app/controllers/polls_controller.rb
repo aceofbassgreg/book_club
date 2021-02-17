@@ -25,7 +25,7 @@ class PollsController < ApplicationController
         user_id: session[:current_user_id]
       )
     end
-    # FIXME - should be able to render without setting this instance var
+
     redirect_to events_url
   end
 

@@ -15,7 +15,7 @@
         <%= link_to "Sign In", sessions_new_url,  class: "navbar-item" %>
       <% else %>
         <% if current_user.admin %>
-          <%= link_to "Create Poll", new_poll_url, class: "navbar-item" %>
+          <%= link_to "Create Event", new_event_url, class: "navbar-item" %>
           <%= link_to "Add Users", users_new_url, class: "navbar-item" %>
         <% end %>
         <%= link_to "Sign Out", {

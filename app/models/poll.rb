@@ -2,10 +2,10 @@ class Poll < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :user_book_votes, through: :books
 
-  belongs_to :event
-
   accepts_nested_attributes_for :books
   accepts_nested_attributes_for :user_book_votes
+
+  belongs_to :event
 
   enum poll_type: { book: 'book', date: 'date' }
 
