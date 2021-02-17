@@ -1,11 +1,11 @@
 <%= form.fields_for :polls do |polls_form| %>
   <div class="field">
     <label class="label">Poll Active Start Date:</label>
-    <%= polls_form.date_field :active_starting_at, class: "input" %>
+    <%= polls_form.date_field :active_starting_at, class: "input", required: true %>
   </div>
   <div class="field">
     <label class="label">Poll End Date:</label>
-    <%= polls_form.date_field :active_ending_at, class: "input" %>
+    <%= polls_form.date_field :active_ending_at, class: "input", required: true %>
   </div>
   <%= polls_form.hidden_field(:poll_type, value: "book") %>
   </br>
