@@ -1,0 +1,28 @@
+<%= form.fields_for :polls do |polls_form| %>
+  <div class="field">
+    <label class="label">Poll Active Start Date:</label>
+    <%= polls_form.date_field :active_starting_at, class: "input" %>
+  </div>
+  <div class="field">
+    <label class="label">Poll End Date:</label>
+    <%= polls_form.date_field :active_ending_at, class: "input" %>
+  </div>
+  <%= polls_form.hidden_field(:poll_type, value: "book") %>
+  </br>
+  </br>
+  <h4 class="title is-3">Book options:</h4>
+  <%= polls_form.fields_for :books do |books_form| %>
+    <div id="fieldsetContainer">
+      <fieldset id="0" class="field is-horizontal">
+        <label class="field-label">Title:</label>
+        <%= books_form.text_field :title, class: "input field-body" %>
+        <label class="field-label">Author:</label>
+        <%= books_form.text_field :author, class: "input field-body" %>
+        <label class="field-label">Link:</label>
+        <%= books_form.text_field :link, class: "input field-body" %>
+      </fieldset>
+    </div>
+    </br>
+    <button type="button" class="button is-info is-small is-light is-rounded" id="addBook">Add more books</button>
+  <% end %>
+<% end %>
