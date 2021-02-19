@@ -1,7 +1,4 @@
-console.log("SUCCESS");
-
 const addBook = ()=> {
-  console.log("clicked");
   const createButton = document.getElementById("addBook");
   createButton.addEventListener("click", () => {
     const lastId = document.querySelector('#fieldsetContainer').lastElementChild.id;
