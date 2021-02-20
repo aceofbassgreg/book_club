@@ -5,6 +5,9 @@ class Poll < ApplicationRecord
   accepts_nested_attributes_for :books
   accepts_nested_attributes_for :user_book_votes
 
+  validates :active_starting_at, presence: true
+  validates :active_ending_at, presence: true
+
   belongs_to :event
 
   enum poll_type: { book: 'book', date: 'date' }

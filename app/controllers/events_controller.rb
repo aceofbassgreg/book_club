@@ -10,9 +10,21 @@ class EventsController < ApplicationController
   end
 
   def create
-    Event.create!(event_params)
+        unless event_params['polls_attributes']['0']['books_attributes']
+      flash.alert = 'Event creation failed, books must be added to create a poll.'
+      render action: :new
+      return
+    end
 
-    redirect_to events_url
+    @event = Event.create(event_params)
+
+    if @event.valid?
+      flash.notice = 'Event created successfully.'
+      redirect_to events_url
+    else
+      flash.alert = "Event did not create successfully: #{@event.errors.full_messages.to_sentence}."
+      render action: :new
+    end
   end
 
   private
@@ -30,6 +42,6 @@ class EventsController < ApplicationController
   end
 
   def serialized_events
-    Events::Json.new.(Event.all)
+    Events::Json.new.(Event.all).sort.reverse
   end
 end

@@ -4,5 +4,6 @@ class Book < ApplicationRecord
 
   accepts_nested_attributes_for :user_book_votes
 
-  validates :title, uniqueness: { scope: :poll, message: 'must be uniqe per poll' }
+  validates :title, presence: true
+  validates :author, presence: true
 end
