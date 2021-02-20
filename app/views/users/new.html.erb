@@ -1,1 +1,26 @@
-<h2>Hi</h2>
+<div class="container">
+  <h2 class="title is-2">Create New User</h2>
+  <%= form_with model: @user do |form| %>
+    <div class="field">
+      <label class="label">First Name:</label>
+      <%= form.text_field :first_name, class: "input", required: true %>
+    </div>
+    <div class="field">
+      <label class="label">Last Name:</label>
+      <%= form.text_field :last_name, class: "input", required: true %>
+    </div>
+    <div class="field">
+      <label class="label">Email:</label>
+      <%= form.text_field :email, class: "input", required: true %>
+    </div>
+    </br>
+    <div>
+      <div class="field">
+        <label class="field-label"><b>Admin?</b></label>
+        <%= form.check_box :admin, class: "checkbox" %>
+      </div>
+    </div>
+    </br>
+    <%= form.submit class: "button is-success is-rounded is-normal" %>
+  <% end %>
+</div>

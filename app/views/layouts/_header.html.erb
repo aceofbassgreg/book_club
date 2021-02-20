@@ -16,7 +16,7 @@
       <% else %>
         <% if current_user.admin %>
           <%= link_to "Create Event", new_event_url, class: "navbar-item" %>
-          <%= link_to "Add Users", users_new_url, class: "navbar-item" %>
+          <%= link_to "Add Users", new_user_url, class: "navbar-item" %>
         <% end %>
         <%= link_to "Sign Out", {
           controller: :sessions,
