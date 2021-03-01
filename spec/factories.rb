@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :invite do
+    first_name { "MyString" }
+    email { "MyString" }
+  end
+
   factory :poll do
     sequence(:name) { |n| "Poll ##{n}" }
     active_starting_at { Date.yesterday }
