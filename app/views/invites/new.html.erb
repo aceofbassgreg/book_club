@@ -1,2 +1,15 @@
-<h1>Invites#new</h1>
-<p>Find me in app/views/invites/new.html.erb</p>
+<div class="container">
+  <h2 class="title is-2">Invite Users</h2>
+  <%= form_with model: @invite do |form| %>
+    <div class="field">
+      <label class="label">First Name:</label>
+      <%= form.text_field :first_name, class: "input", required: true %>
+    </div>
+    <div class="field">
+      <label class="label">Email:</label>
+      <%= form.text_field :email, class: "input", required: true %>
+    </div>
+    </br>
+    <%= form.submit class: "button is-success is-rounded is-normal", value: "Invite User" %>
+  <% end %>
+</div>
