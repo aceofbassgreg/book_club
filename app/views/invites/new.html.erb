@@ -10,6 +10,10 @@
       <%= form.text_field :email, class: "input", required: true %>
     </div>
     </br>
-    <%= form.submit class: "button is-success is-rounded is-normal", value: "Invite User" %>
+    <%= form.submit(
+      class: "button is-success is-rounded is-normal",
+      value: "Invite User",
+      data: { confirm: "This will trigger an email to the user. Are you sure?" }
+    ) %>
   <% end %>
 </div>

@@ -4,7 +4,10 @@ class InvitesController < ApplicationController
   end
 
   def create
-    @invite.create(params: invite_params)
+    @invite = Invite.new(invite_params)
+    if @invite.save
+      UserMailer.with(user: @invite).invite_email.deliver_later
+    end
   end
 
   private
