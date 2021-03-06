@@ -1,11 +1,11 @@
-const addBook = ()=> {
-  const createButton = document.getElementById("addBook");
+const addFieldset = ()=> {
+  const createButton = document.getElementsByClassName("addFieldset")[0];
   createButton.addEventListener("click", () => {
     const lastId = document.querySelector('#fieldsetContainer').lastElementChild.id;
 
     const newId = parseInt(lastId, 10) + 1;
 
-    if (newId <= 5) {
+    if (newId <= 9) {
 
       const newFieldset = document.querySelector('[id="0"]').outerHTML.replace(/0/g,newId);
 
@@ -15,4 +15,4 @@ const addBook = ()=> {
     };
   });
 }
-export { addBook };
+export { addFieldset };

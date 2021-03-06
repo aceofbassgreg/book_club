@@ -2,19 +2,15 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
-require("packs/addBook")
-require("packs/removeBook")
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import { addBook } from '../packs/addBook'
-import { removeBook } from '../packs/removeBook'
+import { addFieldset } from '../packs/addFieldset'
+import { removeFieldset } from '../packs/removeFieldset'
 
 import "@fortawesome/fontawesome-free/js/all";
-
-window.addBook = addBook
 
 Rails.start()
 Turbolinks.start()
@@ -22,13 +18,13 @@ ActiveStorage.start()
 
 document.addEventListener('turbolinks:load', ()=> {
   if (document.querySelector('#fieldsetContainer')) {
-    addBook()
+    addFieldset()
   }
 })
 
 document.addEventListener('turbolinks:load', ()=> {
   if (document.querySelector("#fieldsetContainer")) {
-    removeBook();
+    removeFieldset();
   }
 })
 
