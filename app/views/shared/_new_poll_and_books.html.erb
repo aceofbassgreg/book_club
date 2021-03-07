@@ -11,7 +11,7 @@
   </br>
   </br>
   <h4 class="title is-3">Book options:</h4>
-  <%= polls_form.fields_for :books do |books_form| %>
+  <%= polls_form.fields_for "books_attributes[]", Book.new do |books_form| %>
     <div id="fieldsetContainer">
       <fieldset id="0" class="field is-horizontal">
         <label class="field-label">Title:</label>
@@ -36,3 +36,4 @@
     </button>
   <% end %>
 <% end %>
+

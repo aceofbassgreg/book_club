@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def create
-        unless event_params['polls_attributes']['0']['books_attributes']
+    unless event_params['polls_attributes']['0']['books_attributes']
       flash.alert = 'Event creation failed, books must be added to create a poll.'
       render action: :new
       return
