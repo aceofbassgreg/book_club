@@ -1,36 +1,36 @@
 <div class="container">
   <h2 class="title is-2">Invite Users</h2>
   <%= form_with model: @invite do |invite_form| %>
-  <%= fields_for "invites[]", @invite do |form| %>
-    <div id="fieldsetContainer">
-      <fieldset id="0" class="field is-horizontal">
-        <label class="label">First Name:</label>
-        <%= form.text_field :first_name, class: "input", required: true %>
-        <label class="label">Email:</label>
-        <%= form.text_field :email, class: "input", required: true %>
-        <button type="button"  class="button is-danger is-small is-rounded removeFieldset">
-          <span class="icon is-large">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
+    <%= fields_for "invites[]", @invite do |form| %>
+      <div id="fieldsetContainer">
+        <fieldset id="0" class="field is-horizontal">
+          <label class="label">First Name:</label>
+          <%= form.text_field :first_name, class: "input", required: true %>
+          <label class="label">Email:</label>
+          <%= form.text_field :email, class: "input", required: true %>
+          <button type="button"  class="button is-danger is-small is-rounded removeFieldset">
+            <span class="icon is-large">
+              <i class="fas fa-times"></i>
+            </span>
+          </button>
 
-      </fieldset>
-    </div>
-    </br>
-    <button type="button" class="button is-info is-small is-light is-rounded addFieldset" >
-      <span class="icon is-large">
-        <i class="fas fa-plus-circle"></i>
-      </span>
-      <span>Invite more users</span>
-    </button>
-    </br>
-    </br>
-    </br>
-    <%= invite_form.submit(
-      class: "button is-success is-rounded is-normal",
-      value: "Invite User",
-      data: { confirm: "This will trigger an email to invited users. Do you wish to proceed?" }
-    ) %>
-<% end %>
+        </fieldset>
+      </div>
+      </br>
+      <button type="button" class="button is-info is-small is-light is-rounded addFieldset" >
+        <span class="icon is-large">
+          <i class="fas fa-plus-circle"></i>
+        </span>
+        <span>Invite more users</span>
+      </button>
+      </br>
+      </br>
+      </br>
+      <%= invite_form.submit(
+        class: "button is-success is-rounded is-normal",
+        value: "Invite User",
+        data: { confirm: "This will trigger an email to invited users. Do you wish to proceed?" }
+      ) %>
+    <% end %>
   <% end %>
 </div>
