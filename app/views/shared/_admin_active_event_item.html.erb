@@ -1,0 +1,18 @@
+<div class="columns">
+  <div class="column is-four-fifths">
+    <%= render "shared/active_event_item", event: event %>
+  </div>
+  <%= link_to(
+    event_path(event),
+    method: :delete,
+    data: {
+      confirm: "Event #{event.name} and its associated polls and books will be removed
+        forever. Are you sure?",
+    },
+    class: "button is-danger is-small is-rounded"
+  ) do %>
+      <span class="icon is-large">
+        <i class="fas fa-times"></i>
+      </span>
+    <% end %>
+</div>

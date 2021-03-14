@@ -1,9 +1,17 @@
 <div class="section">
   <% @events.each do |event| %>
     <% if current_user && event.active? %>
-      <%= render "shared/active_event_item", event: event %>
-    <% else %>
-      <%= render "shared/inactive_event_item", event: event %>
+      <% if current_user.admin? %>
+        <%= render "shared/admin_active_event_item", event: event %>
+      <% else %>
+        <%= render "shared/active_event_item", event: event %>
+      <% end %>
+    <% elsif current_user && !event.active? %>
+      <% if current_user.admin? %>
+        <%= render "shared/admin_inactive_event_item", event: event %>
+      <% else %>
+        <%= render "shared/inactive_event_item", event: event %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
