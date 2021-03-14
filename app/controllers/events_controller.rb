@@ -27,11 +27,22 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    result = Event.find(params[:id]).destroy
+    if result
+      flash.notice = 'Event deleted successfully.'
+      redirect_to events_url
+    else
+      flash.alert = 'Event was not removed.'
+    end
+  end
+
   private
 
   def event_params
     params.require(:event).permit(
       :name,
+      :id,
       polls_attributes: [
         :active_starting_at,
         :active_ending_at,
