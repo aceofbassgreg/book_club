@@ -1,13 +1,15 @@
 class UserMailer < ApplicationMailer
   def invite_email
     @user = params[:user]
-    @url  = ENV['REGISTRATION_URL'] + user_hash
+    base_url = "#{ENV['REGISTRATION_URL']}?"
+    params = URI.encode_www_form('user' => user_str)
+    @url = "#{base_url}#{params}"
     mail(to: @user.email, subject: 'Welcome to the Eclectic Book Club App')
   end
 
   private
 
-  def user_hash
-    Digest::SHA256.hexdigest("#{@user.first_name}+#{@user.email}")
+  def user_str
+    "#{@user.first_name}+#{@user.email}"
   end
 end
