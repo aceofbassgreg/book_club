@@ -12,6 +12,16 @@ class Poll < ApplicationRecord
 
   enum poll_type: { book: 'book', date: 'date' }
 
+  def book_score_results
+    book_ids = user_book_votes.pluck(:book_id).uniq
+    book_ids.map do |id|
+      {
+        book_id: id,
+        book_score: book_score(id) / user_book_votes.where(book_id: id).count
+      }
+    end
+  end
+
   def book_score(book_id)
     opts = user_book_votes.where(book_id: book_id)
     opts.pluck(:score).inject(:+)

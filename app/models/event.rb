@@ -10,6 +10,18 @@ class Event < ActiveRecord::Base
     polls.find_by(poll_type: :book)
   end
 
+  def book_poll_votes?
+    !book_poll.user_book_votes.empty?
+  end
+
+  def user_book_votes
+    book_poll.user_book_votes
+  end
+
+  def book_poll_results
+    book_poll.book_score_results
+  end
+
   def active?
     polls.any?(&:active?)
   end
