@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   def new
     redirect_to events_path if current_user
 
-    if !user_invited? || !params[:user].nil?
-      flash.alert = "Sorry, something went wrong."
+    if !user_invited?(params[:user].split('+').last) || params[:user].nil?
+      flash.alert = 'Sorry, something went wrong.'
       redirect_to root_url
     end
 
@@ -12,10 +12,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    if !user_invited?
+    invited = user_invited?(user_params[:email])
+    if !invited
       flash.alert = 'Sorry, something went wrong.'
       redirect_to root_url
-    elsif matching_passwords? && user_invited?
+    elsif matching_passwords? && invited
       @user = User.create(user_params.except(:password_confirm))
       if @user.valid?
         flash.notice = 'Thanks for joining!'
@@ -36,8 +37,8 @@ class UsersController < ApplicationController
     user_params[:password] == user_params[:password_confirm]
   end
 
-  def user_invited?
-    Invite.find_by(email: params[:email])
+  def user_invited?(email)
+    Invite.find_by(email: email)
   end
 
   def user_params
