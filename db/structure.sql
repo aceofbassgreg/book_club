@@ -46,7 +46,8 @@ CREATE TABLE public.books (
     link character varying,
     poll_id bigint,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    user_id integer
 );
 
 
@@ -422,6 +423,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201228145023'),
 ('20201228145041'),
 ('20201228154941'),
-('20210228010317');
+('20210228010317'),
+('20210321054741');
 
 
