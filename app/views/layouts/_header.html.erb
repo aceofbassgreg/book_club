@@ -15,8 +15,14 @@
         <%= link_to "Sign In", sessions_new_url,  class: "navbar-item" %>
       <% else %>
         <% if current_user.admin %>
-          <%= link_to "Create Event", new_event_url, class: "navbar-item" %>
-          <%= link_to "Invite Users", new_invite_url, class: "navbar-item" %>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <div class="navbar-link">Admin Actions</div>
+              <div class="navbar-dropdown is-boxed">
+                <%= link_to "Invite Users", new_invite_url, class: "navbar-item" %>
+                <%= link_to "Create Event", new_event_url, class: "navbar-item" %>
+              </div>
+            </div>
+          </div>
         <% end %>
         <%= link_to "Sign Out", {
           controller: :sessions,
