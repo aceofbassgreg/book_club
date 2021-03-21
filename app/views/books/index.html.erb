@@ -1,5 +1,15 @@
 <div class="container">
-  <h2 class="title is-2">Book Ideas</h2>
+  <h3 class="title is-2">Book Ideas</h3>
+  <%= link_to new_book_path do %>
+    <button class="button is-success is-rounded">
+      <span class="icon is-large">
+        <i class="fas fa-plus-circle"></i>
+      </span>
+      <span>Add book ideas</span>
+    </button>
+  <% end %>
+  </br>
+  </br>
   <table class="table is-bordered is-striped is-hoverable">
     <thead>
       <tr>
