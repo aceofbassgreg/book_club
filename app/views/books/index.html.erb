@@ -17,20 +17,22 @@
           <td class="pt-4"><%= book.author %></td>
           <td class="pt-4"><%= book.user_first_name %></td>
           <td class="pt-4"><%= book.created_at.to_formatted_s(:long) %></td>
-          <% if current_user.id == book.user_id || current_user.admin? %>
-            <td class="pt-4"><%= link_to(
-              book_path(book),
-              method: :delete,
-              data: {
-                confirm: "Book #{book.title} will be removed. Are you sure?"
-              },
-              class: "button is-danger is-small is-rounded"
-            ) do %>
-              <span class="icon is-large">
-                <i class="fas fa-times"></i>
-              </span>
+            <% if current_user.id == book.user_id || current_user.admin? %>
+              <td class="pt-4"><%= link_to(
+                book_path(book),
+                method: :delete,
+                data: {
+                  confirm: "Book #{book.title} will be removed. Are you sure?"
+                },
+                class: "button is-danger is-small is-rounded"
+              ) do %>
+                <span class="icon is-large">
+                  <i class="fas fa-times"></i>
+                </span>
+              <% end %>
+            <% else %>
+              <td class="pt-4"></td>
             <% end %>
-          <% end %>
           </td>
         </tr>
       <% end %>
