@@ -12,28 +12,7 @@
   </br>
   <h4 class="title is-3">Book options:</h4>
   <%= polls_form.fields_for "books_attributes[]", Book.new do |books_form| %>
-    <div id="fieldsetContainer">
-      <fieldset id="0" class="field is-horizontal">
-        <label class="field-label">Title:</label>
-        <%= books_form.text_field :title, class: "input field-body" %>
-        <label class="field-label">Author:</label>
-        <%= books_form.text_field :author, class: "input field-body" %>
-        <label class="field-label">Link:</label>
-        <%= books_form.text_field :link, class: "input field-body" %>
-        <button type="button"  class="button is-danger is-small is-rounded removeFieldset">
-          <span class="icon is-large">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-      </fieldset>
-    </div>
-    </br>
-    <button type="button" class="button is-info is-small is-light is-rounded addFieldset" >
-      <span class="icon is-large">
-        <i class="fas fa-plus-circle"></i>
-      </span>
-      <span>Add more books</span>
-    </button>
+    <% render "shared/add_books", form: books_form %>
   <% end %>
 <% end %>
 
