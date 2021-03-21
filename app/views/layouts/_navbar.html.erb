@@ -14,6 +14,8 @@
       <% unless logged_in? %>
         <%= link_to "Sign In", sessions_new_url,  class: "navbar-item" %>
       <% else %>
+        <%= link_to "Home", root_path, class: "navbar-item" %>
+        <%= link_to "Book Ideas", books_url, class: "navbar-item" %>
         <% if current_user.admin %>
           <div class="navbar-item has-dropdown is-hoverable">
             <div class="navbar-link">Admin Actions</div>
