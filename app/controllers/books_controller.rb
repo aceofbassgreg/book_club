@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    @books = serialized_books(Book.all_not_in_poll)
+    @books = Book.all_not_in_poll
   end
 
   def new
@@ -18,15 +18,21 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    result = Book.find(params[:id]).destroy
+    if result
+      flash.notice = 'Book deleted successfully.'
+      redirect_to books_url
+    else
+      flash.alert = 'Book was not removed.'
+    end
+  end
+
   private
 
   def book_params
     params.require(:books).map do |book|
       book.permit(%i[title author link])
     end
-  end
-
-  def serialized_books(books)
-    books.group_by(:user_id)
   end
 end

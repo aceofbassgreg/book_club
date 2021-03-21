@@ -11,4 +11,8 @@ class Book < ApplicationRecord
   def self.all_not_in_poll
     where(poll_id: nil)
   end
+
+  def user_first_name
+    user.first_name
+  end
 end
