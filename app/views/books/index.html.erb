@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 class="title is-2">Book Ideas</h2>
+  <table class="table is-bordered is-striped is-hoverable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Submitted By</th>
+        <th>Date Submitted</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr class="is-hoverable">
+          <td class="pt-4"><%= link_to book.title, book.link, target: :_blank %></td>
+          <td class="pt-4"><%= book.author %></td>
+          <td class="pt-4"><%= book.user_first_name %></td>
+          <td class="pt-4"><%= book.created_at.to_formatted_s(:long) %></td>
+          <% if current_user.id == book.user_id || current_user.admin? %>
+            <td class="pt-4"><%= link_to(
+              book_path(book),
+              method: :delete,
+              data: {
+                confirm: "Book #{book.title} will be removed. Are you sure?"
+              },
+              class: "button is-danger is-small is-rounded"
+            ) do %>
+              <span class="icon is-large">
+                <i class="fas fa-times"></i>
+              </span>
+            <% end %>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'sessions/destroy'
 
+  resources :books
   resources :invites, only: %i[new create]
   resources :users
   resources :events
