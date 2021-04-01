@@ -1,0 +1,13 @@
+<td class="pt-4">
+  <%= link_to(
+    book_path(book),
+    method: :delete,
+    data: {
+      confirm: "#{book.title} will be removed. Are you sure?"
+    },
+    class: "button is-danger is-small is-rounded"
+  ) do %>
+  <span class="icon is-large">
+    <i class="fas fa-times"></i>
+  </span>
+<% end %>
