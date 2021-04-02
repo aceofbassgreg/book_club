@@ -1,4 +1,10 @@
 <td class="pt-4">
+<label class="checkbox">
+  <input type="checkbox">
+  Add to new poll
+</label>
+</td>
+<td class="pt-4">
   <%= link_to(
     book_path(book),
     method: :delete,
@@ -7,7 +13,9 @@
     },
     class: "button is-danger is-small is-rounded"
   ) do %>
-  <span class="icon is-large">
-    <i class="fas fa-times"></i>
-  </span>
-<% end %>
+    <span class="icon is-large">
+      <i class="fas fa-times"></i>
+    </span>
+    <span>Delete book</span>
+  <% end %>
+</td>
