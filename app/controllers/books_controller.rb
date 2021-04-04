@@ -9,7 +9,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @books = Book.create(book_params.map { |p| p.merge(user_id: current_user.id) })
+    @books = Book.create(book_params)
     if @books.all?(&:valid?)
       flash.notice = 'Books added successfully.'
       redirect_to books_url
@@ -33,7 +33,7 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:books).map do |book|
-      book.permit(%i[title author link])
+      book.permit(%i[title author link user_id])
     end
   end
 end
