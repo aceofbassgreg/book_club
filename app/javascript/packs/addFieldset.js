@@ -7,7 +7,7 @@ const addFieldset = ()=> {
 
     if (newId <= 9) {
 
-      const newFieldset = document.querySelector("[id=" + CSS.escape(lastId) + "]").outerHTML.replace(/id=lastId/g,"id=" + newId).replace(/value=\".+\"/g,"");
+      const newFieldset = document.querySelector("[id=" + CSS.escape(lastId) + "]").outerHTML.replace(`id="${lastId}"`,`id="${newId}"`).replace(/value=\".+\"/g,"");
 
       document.querySelector("#fieldsetContainer").insertAdjacentHTML(
           "beforeend", newFieldset
