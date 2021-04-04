@@ -48,7 +48,7 @@ class EventsController < ApplicationController
         :active_starting_at,
         :active_ending_at,
         :poll_type,
-        { books_attributes: %i[title author link] }
+        { books_attributes: %i[title author link user_id] }
       ]
     )
   end
