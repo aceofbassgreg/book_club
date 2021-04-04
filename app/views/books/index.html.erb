@@ -10,33 +10,41 @@
   <% end %>
   </br>
   </br>
-  <table class="table is-bordered is-striped is-hoverable">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Submitted By</th>
-        <th>Date Submitted</th>
-        <% if current_user.admin? %>
-          <th colspan="2">Admin options</th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody>
-      <% @books.each do |book| %>
-        <tr class="is-hoverable">
-          <td class="pt-4"><%= link_to book.title, book.link, target: :_blank %></td>
-          <td class="pt-4"><%= book.author %></td>
-          <td class="pt-4"><%= book.user_first_name %></td>
-          <td class="pt-4"><%= book.created_at.to_formatted_s(:long) %></td>
-            <% if current_user.id == book.user_id || current_user.admin? %>
-              <%= render "shared/book_idea_admin_options", book: book %>
-            <% else %>
-              <td class="pt-4"></td>
-            <% end %>
-          </td>
+  <%= form_with url: new_event_path, method: :get do |form| %>
+    <table class="table is-bordered is-striped is-hoverable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Submitted By</th>
+          <th>Date Submitted</th>
+          <% if current_user.admin? %>
+            <th colspan="2">Admin options</th>
+          <% end %>
         </tr>
+      </thead>
+      <tbody>
+        <% @books.each do |book| %>
+          <tr class="is-hoverable">
+            <td class="pt-4"><%= link_to book.title, book.link, target: :_blank %></td>
+            <td class="pt-4"><%= book.author %></td>
+            <td class="pt-4"><%= book.user_first_name %></td>
+            <td class="pt-4"><%= book.created_at.to_formatted_s(:long) %></td>
+              <% if current_user.id == book.user_id || current_user.admin? %>
+                <%= render "shared/book_idea_admin_options", book: book, form: form %>
+              <% else %>
+                <td class="pt-4"></td>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </br>
+    </br>
+    <%= form.submit(
+      value: "Create New Event with selected books",
+      class: "button is-success is-rounded is-normal",
+      url: new_event_path) %>
       <% end %>
-    </tbody>
-  </table>
 </div>

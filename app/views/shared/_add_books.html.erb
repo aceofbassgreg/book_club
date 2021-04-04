@@ -1,18 +1,36 @@
 <div id="fieldsetContainer">
-  <fieldset id="0" class="field is-horizontal">
-    <label class="field-label">Title:</label>
-    <%= form.text_field :title, class: "input field-body" %>
-    <label class="field-label">Author:</label>
-    <%= form.text_field :author, class: "input field-body" %>
-    <label class="field-label">Link:</label>
-    <%= form.text_field :link, class: "input field-body" %>
-    <button type="button"  class="button is-danger is-small is-rounded removeFieldset">
-      <span class="icon is-large">
-        <i class="fas fa-times"></i>
-      </span>
-    </button>
-  </fieldset>
-</div>
+  <% if @books && @books.any? %>
+    <% @books.each_with_index do |book, index| %>
+      <fieldset id=<%=index%> class="field is-horizontal">
+        <label class="field-label">Title:</label>
+        <%= form.text_field :title, class: "input field-body", value: book.title %>
+        <label class="field-label">Author:</label>
+        <%= form.text_field :author, class: "input field-body", value: book.author %>
+        <label class="field-label">Link:</label>
+        <%= form.text_field :link, class: "input field-body", value: book.link %>
+        <button type="button"  class="button is-danger is-small is-rounded removeFieldset">
+          <span class="icon is-large">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+      </fieldset>
+    <% end %>
+  <% else %>
+    <fieldset id="0" class="field is-horizontal">
+      <label class="field-label">Title:</label>
+      <%= form.text_field :title, class: "input field-body" %>
+      <label class="field-label">Author:</label>
+      <%= form.text_field :author, class: "input field-body" %>
+      <label class="field-label">Link:</label>
+      <%= form.text_field :link, class: "input field-body" %>
+      <button type="button"  class="button is-danger is-small is-rounded removeFieldset">
+        <span class="icon is-large">
+          <i class="fas fa-times"></i>
+        </span>
+      </button>
+    </fieldset>
+    <% end %>
+  </div>
 </br>
 <button type="button" class="button is-info is-small is-light is-rounded addFieldset" >
   <span class="icon is-large">

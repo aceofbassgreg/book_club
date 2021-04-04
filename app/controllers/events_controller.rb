@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @poll = @event.polls.build
+    @books = books_from_params
     @book = @poll.books.build
   end
 
@@ -54,5 +55,10 @@ class EventsController < ApplicationController
 
   def serialized_events
     Events::Json.new.(Event.all).sort.reverse
+  end
+
+  def books_from_params
+    book_ids = params[:book_id]&.keys
+    Book.find(book_ids) if book_ids
   end
 end

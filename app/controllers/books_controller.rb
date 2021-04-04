@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all_not_in_poll
+    @event = Event.new
   end
 
   def new

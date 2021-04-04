@@ -1,8 +1,6 @@
 <td class="pt-4">
-<label class="checkbox">
-  <input type="checkbox">
-  Add to new poll
-</label>
+  <%= check_box("book_id", book.id) %>
+  <label>Add book to new poll</label>
 </td>
 <td class="pt-4">
   <%= link_to(
