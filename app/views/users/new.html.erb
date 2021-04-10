@@ -11,7 +11,7 @@
     </div>
     <div class="field">
       <label class="label">Email:</label>
-      <%= form.text_field :email, class: "input", required: true %>
+      <%= form.text_field :email, readonly: true, class: "input", required: true %>
     </div>
     <div class="field">
       <label class="label">Password:</label>
@@ -23,12 +23,6 @@
     </div>
 
     </br>
-    <div>
-      <div class="field">
-        <label class="field-label"><b>Admin?</b></label>
-        <%= form.check_box :admin, class: "checkbox" %>
-      </div>
-    </div>
     </br>
     <%= form.submit class: "button is-success is-rounded is-normal" %>
   <% end %>

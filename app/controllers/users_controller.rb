@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
+
   def new
     redirect_to events_path if current_user
 
@@ -13,17 +15,19 @@ class UsersController < ApplicationController
 
   def create
     invited = user_invited?(user_params[:email])
+
     if !invited
       flash.alert = 'Sorry, something went wrong.'
-      redirect_to root_url
+      redirect_back(fallback_location: root_path)
     elsif matching_passwords? && invited
       @user = User.create(user_params.except(:password_confirm))
       if @user.valid?
-        flash.notice = 'Thanks for joining!'
+        flash.notice = "Thanks for joining, #{@user.first_name}!"
+        session[:current_user_id] = @user.id
         redirect_to events_url
       else
         flash.alert = "User did not create successfully: #{@user.errors.full_messages.to_sentence}."
-        redirect_to back
+        redirect_back(fallback_location: root_path)
       end
     elsif !matching_passwords?
       flash.alert = 'Password confirmation does not match password.'
@@ -43,7 +47,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :first_name, :last_name, :email, :admin, :password, :password_confirm
+      :first_name, :last_name, :email,:password, :password_confirm
     )
   end
 end
