@@ -58,7 +58,10 @@ class EventsController < ApplicationController
   end
 
   def books_from_params
-    book_ids = params[:book_id]&.keys
+    book_id_params = params[:book_id]
+    return unless book_id_params
+
+    book_ids = book_id_params.select { |_book_id, v| v == '1' }.keys
     Book.find(book_ids) if book_ids
   end
 end
