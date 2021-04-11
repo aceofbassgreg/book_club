@@ -11,6 +11,9 @@ class InvitesController < ApplicationController
         UserMailer.with(user: @invite).invite_email.deliver_later
       end
     end
+
+    flash['notice'] = 'Email invites scheduled.'
+    redirect_to root_url
   end
 
   private
